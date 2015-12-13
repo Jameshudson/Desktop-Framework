@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="200.0" minWidth="330.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.printview.PrintPresenter">
+   <children>
+      <TableView fx:id="table" onDragDetected="#dragDetected" onDragExited="#test">
+        <columns>
+          <TableColumn fx:id="fileName" editable="false" prefWidth="115.0" text="File Name" />
+          <TableColumn fx:id="fileDate" prefWidth="115.0" text="Date Created" />
+            <TableColumn prefWidth="115.0" text="Print status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
