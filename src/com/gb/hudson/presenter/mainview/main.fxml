@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.mainview.MainPresenter">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDone="#onDragEventHandler" onDragDropped="#onDragEventExitHandler" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.mainview.MainPresenter">
    <children>
-      <SplitPane dividerPositions="0.55" prefHeight="400.0" prefWidth="600.0">
-        <items>
-          <AnchorPane fx:id="left" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-          <AnchorPane fx:id="right" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-        </items>
-      </SplitPane>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+          <AnchorPane fx:id="left" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <VBox fx:id="right" BorderPane.alignment="CENTER" />
+         </right>
+         <top>
+            <AnchorPane BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <AnchorPane fx:id="footer" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <AnchorPane fx:id="dragPane" disable="true" opacity="0.0" styleClass="dragPane" stylesheets="@../../main.css">
+         <children>
+            <StackPane>
+               <children>
+                  <Box height="350.0" styleClass="border" width="550.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="On Drag" wrappingWidth="63.76220703125" x="50.0" />
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

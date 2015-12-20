@@ -1,2 +1,19 @@
-@CHARSET "UTF-8";
+.dragPane{
 
+    -fx-background-color: #493dff;
+}
+
+.border{
+
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: dashed;
+}
+
+.ok{
+    -fx-fill: #00ff43;
+}
+
+.bad{
+    -fx-fill: #ff000b;
+}

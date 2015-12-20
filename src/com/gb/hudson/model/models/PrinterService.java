@@ -1,5 +1,6 @@
 package com.gb.hudson.model.models;
 
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,8 +50,14 @@ public class PrinterService implements Service {
 		try {
 			pdfPrinter.printPDF();
 		} catch (NoPrinterSelectedException e) {
-			
+
 			model.fireListenerEvent(NO_PRINTER_SELECTED, null);
+		} catch (PrinterException e) {
+
+			model.fireListenerEvent(ERROR_PRINT_JOB, null);
+		} catch (NullPointerException e) {
+
+			model.fireListenerEvent(ERROR_PRINT_JOB, null);
 		}
 	}
 	
@@ -88,8 +95,8 @@ public class PrinterService implements Service {
 		
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		
-		data.put("printer_name", printerName);
-		model.fireListenerEvent("PRINTER_SELECTED", data);
+		data.put(PRINTER_SELECTED, printerName);
+		model.fireListenerEvent(PRINTER_SELECTED, data);
 	}
 
 	@Override

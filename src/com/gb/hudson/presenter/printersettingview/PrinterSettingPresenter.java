@@ -13,12 +13,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
 public class PrinterSettingPresenter implements Initializable {
 	
 	@FXML
 	ChoiceBox<String> printerList;
+
+	@FXML
+	Button selectPrinterButton;
 	
 	@Inject
 	Model model;
@@ -34,7 +38,6 @@ public class PrinterSettingPresenter implements Initializable {
 			
 			List<String> printers = (List<String>)data.get("printers");
 
-			
 			for(int i = printers.size() - 1; i >= 0; i--){
 			
 				ObservableList<String> list = FXCollections.observableArrayList();

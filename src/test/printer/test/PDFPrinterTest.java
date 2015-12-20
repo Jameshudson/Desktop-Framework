@@ -1,8 +1,7 @@
 //package test.printer.test;
 //
-//import static org.junit.Assert.*;
-//
-//import org.junit.Test;
+//import static org.junit.*;
+//import static org.junit.Test;
 //
 //public class PDFPrinterTest {
 //
@@ -12,3 +11,4 @@
 //	}
 //
 //}
+////

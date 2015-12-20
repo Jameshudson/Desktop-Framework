@@ -39,7 +39,7 @@ public class PrintPresenter implements Initializable{
 		
 		printer.listPrinterNames();
 	}
-	
+
 	public void dragDetected(){
 		System.out.println("Testing");
 	}

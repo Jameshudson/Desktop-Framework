@@ -14,13 +14,13 @@ public class Init implements Service {
 		model.addInitData("title", title);
 	}
 
-	@Override
+
 	public void init() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+
 	public void removing() {
 		// TODO Auto-generated method stub
 		

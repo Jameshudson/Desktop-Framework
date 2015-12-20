@@ -1,13 +1,13 @@
 //package test.model.models.test;
 //
-//import Model;
 //import com.gb.hudson.model.*;
-//import org.junit.*;
+//import com.gb.hudson.model.models.PrinterService;
 //
 //import javax.print.PrintService;
 //import javax.print.PrintServiceLookup;
 //import java.util.ArrayList;
 //import java.util.List;
+//
 //
 //public class PrinterServiceTest {
 //

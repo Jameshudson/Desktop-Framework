@@ -28,21 +28,18 @@ public class PDFPrinter{
 		this.pdfPrintList.add(pdf);
 	}
 	
-	public void printPDF(PrintService printer) throws NoPrinterSelectedException{
+	public void printPDF(PrintService printer) throws NoPrinterSelectedException, PrinterException {
 		
 		if(printer != null){
 			
 			for(int i = pdfPrintList.size() - 1; i > 0; i--){
 				
 				this.job.setPageable(pdfPrintList.get(i));
-				try {
-					this.job.print();
-				} catch (PrinterException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				this.job.print();
 			}
 		}else{
+
+			System.out.println(this.printerName);
 			
 			if(!this.printerName.equals("")){
 				
@@ -55,9 +52,11 @@ public class PDFPrinter{
 		}
 	}
 	
-	public void printPDF() throws NoPrinterSelectedException{
+	public void printPDF() throws NoPrinterSelectedException, PrinterException {
 		
-		if(printService != null){
+		if(!this.printerName.equals("")){
+
+			this.printService = findPrintService(printerName);
 			
 			printPDF(this.printService);
 		}else{
@@ -98,18 +97,18 @@ public class PDFPrinter{
      */
     public static List<String> getPrinterServiceNameList() {
 
-        // get list of all print services
-        PrintService[] services = PrinterJob.lookupPrintServices();
-        List<String> list = new ArrayList<String>();
+		// get list of all print services
+		PrintService[] services = PrinterJob.lookupPrintServices();
+		List<String> list = new ArrayList<String>();
 
-        for (int i = 0; i < services.length; i++) {
-            list.add(services[i].getName());
-        }
+		for (int i = 0; i < services.length; i++) {
+			list.add(services[i].getName());
+		}
 
-        return list;
-    }
-    
-    public class NoPrinterSelectedException extends Exception{
+		return list;
+	}
+
+	public class NoPrinterSelectedException extends Exception{
 
 		/**
 		 * 

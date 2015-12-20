@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 
 
 public class Main extends Application {
+
 	@Override
 	public void start(Stage stage) {
 		
@@ -46,8 +47,7 @@ public class Main extends Application {
 		});
 		
 		model.init();
-		
-		stage.setResizable(false);
+
 		stage.setScene(scene);
 		stage.show();
 	}
