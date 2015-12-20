@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../../main.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.footerview.FooterPresenter">
+   <children>
+      <Label text="Selected Printer(s):">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Label>
+      <Text fx:id="selectedPrinter" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+      </Text>
+   </children>
+</HBox>
