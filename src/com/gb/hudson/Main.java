@@ -33,7 +33,7 @@ public class Main extends Application {
 		MainView mainView = new MainView();
 		Scene scene = new Scene(mainView.getView());
 		
-		String url = getClass().getResource("main.css").toExternalForm();
+		String url = getClass().getResource("res/main.css").toExternalForm();
 		scene.getStylesheets().add(url);
 		
 		model.AddListener(Init.INIT, (data) -> {
