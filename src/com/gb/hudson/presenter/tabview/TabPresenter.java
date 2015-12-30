@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import com.gb.hudson.model.Model;
 import com.gb.hudson.presenter.printersettingview.PrinterSettingView;
 
+import com.gb.hudson.presenter.settingview.SettingView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
@@ -27,15 +28,14 @@ public class TabPresenter implements Initializable {
 	@Inject
 	Model model;
 
-	public TabPresenter() {
-		
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 		PrinterSettingView printerSetting = new PrinterSettingView();
 		printer.getChildren().add(printerSetting.getView());
+
+		SettingView settingView = new SettingView();
+		setting.getChildren().add(settingView.getView());
 	}
 }

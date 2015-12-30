@@ -1,9 +1,0 @@
-@font-face {
-  -fx-font-family: "Helvetica";
-  src: url("font/Helvetica.otf"); }
-.dragPane {
-  }
-
-.dragPane_text {
-  -fx-font-family: Helvetica;
-  -fx-text-fill: white; }

@@ -1,0 +1,24 @@
+.text{
+
+  &-ok{
+    -fx-text-fill: $ok_colour;
+  }
+
+  &-good{
+    -fx-text-fill: $good_colour;
+  }
+
+  &-error{
+    -fx-text-fill: $error_colour;
+  }
+
+  &-warning{
+    -fx-text-fill: $warning_colour;
+  }
+}
+
+.drag-label{
+  -fx-text-fill: $drahPane_text_colour;
+  -fx-font-size: 26;
+  -fx-font-family: "Arial";
+}

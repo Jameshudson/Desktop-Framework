@@ -6,17 +6,20 @@ import java.util.ResourceBundle;
 import javax.inject.Inject;
 
 import com.gb.hudson.model.Model;
+import com.gb.hudson.model.models.PrinterService;
 import com.gb.hudson.presenter.footerview.FooterView;
-import com.gb.hudson.presenter.printstarter.PrintStarterView;
 import com.gb.hudson.presenter.printview.PrintView;
 import com.gb.hudson.presenter.tabview.TabView;
 
+import com.gb.hudson.utill.FileUtill;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.effect.*;
 
 public class MainPresenter implements Initializable {
@@ -24,7 +27,7 @@ public class MainPresenter implements Initializable {
     private static final int BLUR_AMOUNT = 20;
 
     private static final GaussianBlur frostEffect =
-            new GaussianBlur();
+            new GaussianBlur(20);
 
     @FXML
 	AnchorPane left;
@@ -39,6 +42,9 @@ public class MainPresenter implements Initializable {
     AnchorPane dragPane;
 
     @FXML
+    Label dragInfoLabel;
+
+    @FXML
     AnchorPane footer;
 
 	@Inject
@@ -47,7 +53,11 @@ public class MainPresenter implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//adding the print table
+//        ResourceBundle lngBndl = ResourceBundle
+//                .getBundle("com.gb.hduson.res.leng_en.LangBundle", new Locale("en", "EN"));
+
+
+        //adding the print table
 		PrintView printView = new PrintView();
 		left.getChildren().add(printView.getView());
 		
@@ -57,23 +67,45 @@ public class MainPresenter implements Initializable {
         FooterView footerView = new FooterView();
         footer.getChildren().add(footerView.getView());
 
-        mainPane.setEffect(frostEffect);
-
 		model.init();
 	}
 
-    public void onDragEventHandler(){
+    public void onDragAction(){
 
-        dragPane.setPrefWidth(dragPane.getScene().getWidth());
-        dragPane.setPrefHeight(dragPane.getScene().getHeight());
+        dragInfoLabel.setLayoutX((dragInfoLabel.getScene().getWidth()/2) - dragInfoLabel.getWidth());
+        dragInfoLabel.setLayoutY((dragInfoLabel.getScene().getHeight()/2) - dragInfoLabel.getHeight());
 
-        dragPane.setDisable(true);
-        dragPane.setOpacity(0.9);
-    }
+        dragInfoLabel.setPrefWidth(dragInfoLabel.getScene().getWidth());
+        dragInfoLabel.setPrefHeight(dragInfoLabel.getScene().getHeight());
 
-    public void onDragEventExitHandler(){
+        dragInfoLabel.setContentDisplay(ContentDisplay.CENTER);
+
+        mainPane.setEffect(frostEffect);
 
         dragPane.setDisable(false);
+        dragPane.setOpacity(1);
+    }
+
+    public void onDragExitAction(DragEvent event){
+
+        Dragboard db = event.getDragboard();
+
+        if(db.hasFiles()){
+
+            int nFiles = db.getFiles().size();
+
+            for(int i = nFiles - 1; i >=0; i--) {
+
+                if(FileUtill.getFileExtension(db.getFiles().get(i)).equals("pdf")){
+
+                    ((PrinterService)this.model.getService(PrinterService.PRINTER_SERVICE_NAME)).addToPrintList(db.getFiles().get(i));
+                }
+            }
+        }
+
+        mainPane.setEffect(null);
+
+        dragPane.setDisable(true);
         dragPane.setOpacity(0.0);
     }
 }

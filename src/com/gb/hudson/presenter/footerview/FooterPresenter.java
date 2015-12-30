@@ -30,7 +30,7 @@ public class FooterPresenter implements Initializable {
             String printerName = (String) data.get(PrinterService.PRINTER_SELECTED);
 
             selectedPrinter.getStyleClass().clear();
-            selectedPrinter.getStyleClass().add("ok");
+            selectedPrinter.getStyleClass().add("text-good");
             selectedPrinter.setText(printerName);
 
             return true;
@@ -39,7 +39,7 @@ public class FooterPresenter implements Initializable {
         model.AddListener(PrinterService.NO_PRINTER_SELECTED, (data) -> {
 
             selectedPrinter.getStyleClass().clear();
-            selectedPrinter.getStyleClass().add("bad");
+            selectedPrinter.getStyleClass().add("text-warning");
             selectedPrinter.setText("No Printer Selected!");
 
             return true;
@@ -48,7 +48,7 @@ public class FooterPresenter implements Initializable {
         model.AddListener(PrinterService.ERROR_PRINT_JOB, (data) -> {
 
             selectedPrinter.getStyleClass().clear();
-            selectedPrinter.getStyleClass().add("bad");
+            selectedPrinter.getStyleClass().add("text-error");
             selectedPrinter.setText("An Error occurred!");
 
             return true;

@@ -1,13 +1,19 @@
 package com.gb.hudson.model.models;
 
 import java.awt.print.PrinterException;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.gb.hudson.model.Model;
 import com.gb.hudson.model.components.Service;
-import com.gb.hudson.printer.PDFPrinter;
-import com.gb.hudson.printer.PDFPrinter.NoPrinterSelectedException;
+import com.gb.hudson.utill.PDFPrinter;
+import com.gb.hudson.utill.PDFPrinter.NoPrinterSelectedException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.printing.PDFPageable;
 
 public class PrinterService implements Service {
 	
@@ -16,6 +22,9 @@ public class PrinterService implements Service {
 	//printer error hooks
 	public static final String ERROR_NO_PRINTER = "ERROR_NO_PRINTER";
 	public static final String ERROR_PRINT_JOB = "ERROR_PRINT_JOB";
+
+	public static final String ERROR_LOADING_FILE = "ERROR_LOADING_FILE";
+	public static final String LOADED_FILE = "LOADED_FILE";
 	
 	//new printer's found hooks
 	public static final String PRINTERS_FOUND = "PRINTERS_FOUND";
@@ -51,13 +60,44 @@ public class PrinterService implements Service {
 			pdfPrinter.printPDF();
 		} catch (NoPrinterSelectedException e) {
 
+			e.printStackTrace();
 			model.fireListenerEvent(NO_PRINTER_SELECTED, null);
 		} catch (PrinterException e) {
 
 			model.fireListenerEvent(ERROR_PRINT_JOB, null);
 		} catch (NullPointerException e) {
 
+			e.printStackTrace();
 			model.fireListenerEvent(ERROR_PRINT_JOB, null);
+		}
+	}
+
+	public void addToPrintList(File file){
+
+		if(file != null && file.exists()){
+
+			try {
+				PDDocument document = PDDocument.load(file);
+
+
+				//converts the pdf to a printable formet and adds it to the print list.
+				PDFPageable printable = new PDFPageable(document);
+				int id = this.pdfPrinter.addPdfToPrintList(printable);
+
+				BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+
+				HashMap<String,Object> data = new HashMap<String, Object>();
+				data.put("file name", file.getName());
+				data.put("file date", attr.creationTime());
+				data.put("file place", id);
+
+				this.model.fireListenerEvent(LOADED_FILE, data);
+			} catch (IOException e) {
+				HashMap<String,Object> data = new HashMap<String, Object>();
+
+				data.put("file", file);
+				this.model.fireListenerEvent(ERROR_LOADING_FILE, data);
+			}
 		}
 	}
 	
@@ -105,4 +145,10 @@ public class PrinterService implements Service {
 
 	}
 
+//	TODO
+	public void insertCoverPages(boolean b) {
+	}
+//	TODO
+	public void invertPages(boolean b) {
+	}
 }

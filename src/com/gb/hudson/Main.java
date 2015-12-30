@@ -7,6 +7,7 @@ import com.airhacks.afterburner.injection.Injector;
 import com.gb.hudson.model.Model;
 import com.gb.hudson.model.models.Init;
 import com.gb.hudson.model.models.PrinterService;
+import com.gb.hudson.model.models.RegisterService;
 import com.gb.hudson.presenter.mainview.MainView;
 
 import javafx.application.Application;
@@ -24,6 +25,7 @@ public class Main extends Application {
 		
 		model.addService("Init", new Init(model));
 		model.addService(PrinterService.PRINTER_SERVICE_NAME, new PrinterService(model));
+		model.addService(RegisterService.REGISTER_SERVICE_NAME, new RegisterService(model));
 		
 		Map<Object,Object> customConfig = new HashMap<Object, Object>();
 		customConfig.put("model", model);
@@ -33,7 +35,7 @@ public class Main extends Application {
 		MainView mainView = new MainView();
 		Scene scene = new Scene(mainView.getView());
 		
-		String url = getClass().getResource("res/main.css").toExternalForm();
+		String url = getClass().getResource("res/css/main.css").toExternalForm();
 		scene.getStylesheets().add(url);
 		
 		model.AddListener(Init.INIT, (data) -> {
