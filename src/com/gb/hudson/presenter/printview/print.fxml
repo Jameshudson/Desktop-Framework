@@ -6,13 +6,13 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.printview.PrintPresenter">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.printview.PrintPresenter">
    <children>
-      <TableView fx:id="table" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#dragDetected" onDragExited="#test">
+      <TableView fx:id="table" onDragDetected="#dragDetected" onDragExited="#test">
         <columns>
-          <TableColumn fx:id="fileName" editable="false" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="File Name" />
-          <TableColumn fx:id="fileDate" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="Date Created" />
-            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="115.0" text="Print status" />
+          <TableColumn fx:id="fileName" editable="false" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="File Name" />
+          <TableColumn fx:id="fileDate" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Date Created" />
+            <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Print status" />
         </columns>
       </TableView>
    </children>

@@ -14,16 +14,26 @@ import com.gb.hudson.presenter.tabview.TabView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.effect.*;
 
 public class MainPresenter implements Initializable {
 
+    private static final int BLUR_AMOUNT = 20;
+
+    private static final GaussianBlur frostEffect =
+            new GaussianBlur();
+
     @FXML
 	AnchorPane left;
-	
+
+    @FXML
+    BorderPane mainPane;
+
 	@FXML
-    VBox right;
+    AnchorPane right;
 
     @FXML
     AnchorPane dragPane;
@@ -44,11 +54,10 @@ public class MainPresenter implements Initializable {
 		TabView printerControls = new TabView();
 		right.getChildren().add(printerControls.getView());
 
-        PrintStarterView printStarter = new PrintStarterView();
-        right.getChildren().add(printStarter.getView());
-
         FooterView footerView = new FooterView();
         footer.getChildren().add(footerView.getView());
+
+        mainPane.setEffect(frostEffect);
 
 		model.init();
 	}

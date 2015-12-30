@@ -9,7 +9,7 @@
 
 <AnchorPane maxWidth="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.hudson.presenter.printersettingview.PrinterSettingPresenter">
    <children>
-      <GridPane vgap="15.0">
+      <GridPane vgap="15.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="15.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,7 +25,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Printer" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="printerList" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Set Printer" GridPane.rowIndex="2" />
-            <Button fx:id="selectPrinterButton" mnemonicParsing="false" onMouseClicked="#setPrinterAction" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="selectPrinterButton" mnemonicParsing="false" onMouseClicked="#setPrinterAction" text="Select" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <padding>
             <Insets left="5.0" />
