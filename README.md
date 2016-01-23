@@ -1,4 +1,7 @@
 # Java-print-pdf-order
+
+# THIS PROJECT IS ON HOLD FOR NOW.
+
 This small Java fx program allows the user to quickly order pdf's to be printed.
 
 Java print pdf order is heavily based on dependency injection and the MVP design pattern. The model itself is just an observer that holds services and Event objects. Services should be suited to one task ie a Service that gets news articles from a news api. And the Event objects that sit inbetween the service and the view should only handle processing the data passed by the model in a map to update the view.
