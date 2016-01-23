@@ -18,7 +18,7 @@ model.AddListener("event name", (data) -> {
 });
 ```
 
-note that any Service can call any event.
+Note that any Service can call any event.
 
 Example of how to fire an event from a Service.
 
@@ -26,9 +26,8 @@ Example of how to fire an event from a Service.
 model.fireListenerEvent("event name", new HashMap<String, Object>());
 ```
 
-anything registered to listen to this event will be executed.
+Anything registered to listen to this event will be executed.
 
-The Presenter.
 The presenter sits inbetween the view and the model and "talks" to both. A typical Presenter will handle user input and model events. To register model events, first you must implements Initializable in to the class, then override the 'initialize' method.
 
 ```Java
