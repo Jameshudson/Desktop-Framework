@@ -29,7 +29,7 @@ model.fireListenerEvent("event name", new HashMap<String, Object>());
 anything registered to listen to this event will be executed.
 
 The Presenter.
-The presenter sits inbetween the view and the model and "talks" to both. A typical Presenter will handle user input and model events. To register model events, first you must implements Initializable in to the class.
+The presenter sits inbetween the view and the model and "talks" to both. A typical Presenter will handle user input and model events. To register model events, first you must implements Initializable in to the class, then override the 'initialize' method.
 
 ```Java
 public class MainPresenter implements Initializable {
